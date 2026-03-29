@@ -103,9 +103,9 @@ const PROJECTS: Project[] = [
     tech: ["PyTorch", "React Native", "Flask", "OpenCV"],
     metric: "96.22% Accuracy",
     github: "https://github.com/SifatSwapnil2022/MediLeafNET",
-    image: "/public/image/Medileafnet_intro.png",
+    image: "/image/Medileafnet_intro.png",
     icon: <Cpu className="w-6 h-6" />,
-    videoSrc: "/public/videos/MediLeafNET.mp4"
+    videoSrc: "/videos/MediLeafNET.mp4"
   },
   {
     id: "defax",
@@ -124,9 +124,9 @@ const PROJECTS: Project[] = [
     metric: "99.80% Accuracy",
     github: "https://github.com/SifatSwapnil2022/Journal_DefaX_codes",
     paperLink: "https://ieeexplore.ieee.org/document/10534246",
-    image: "/public/image/defax_intro.png",
+    image: "/image/defax_intro.png",
     icon: <CheckCircle2 className="w-6 h-6" />,
-    videoSrc: "/public/videos/Defax.mp4"
+    videoSrc: "/videos/Defax.mp4"
   },
   {
     id: "bazario",
@@ -144,9 +144,9 @@ const PROJECTS: Project[] = [
     metric: "50+ Active Users",
     github: "https://github.com/SifatSwapnil2022/bazario-A-multi-tenant-Ecommerce-Platform",
     website: "https://bazario.ltd/",
-    image: "/public/image/bazario_intro.png",
+    image: "/image/bazario_intro.png",
     icon: <Layers className="w-6 h-6" />,
-      videoSrc: "/public/videos/Bazario.mp4"
+      videoSrc: "/videos/Bazario.mp4"
   }
 ];
 
@@ -372,7 +372,7 @@ export default function App() {
             </a>
           ))}
           <a 
-  href="/public/cv/CV_SIFATULLAH_SHEIKH.pdf"
+  href="/cv/CV_SIFATULLAH_SHEIKH.pdf"
   download
   className="bg-ink text-cream px-6 py-2 rounded-full text-[11px] font-semibold tracking-widest uppercase hover:bg-rust transition-all"
 >
@@ -465,7 +465,7 @@ export default function App() {
               <div className="absolute inset-0 bg-sand/20 rounded-[2rem] rotate-3 -z-10" />
               <div className="absolute inset-0 bg-ink/5 rounded-[2rem] -rotate-2 -z-10" />
               <div className="w-full h-full bg-sand/30 rounded-[2rem] overflow-hidden border-4 border-cream shadow-2xl">
-                <img src="/public/image/myself.jpg" alt="Md Sifatullah Sheikh" className="w-full h-full object-cover object-top" />
+                <img src="/image/myself.jpg" alt="Md Sifatullah Sheikh" className="w-full h-full object-cover object-top" />
               </div>
               
               <div className="absolute -bottom-6 -right-6 bg-cream p-6 rounded-2xl shadow-xl border border-ink/5 max-w-[200px]">
