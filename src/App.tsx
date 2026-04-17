@@ -156,7 +156,7 @@ const PROJECTS: Project[] = [
   longDescription: "SkinCare AI is an intelligent clinical support system that analyzes skin images, classifies diseases through a multi-model ensemble, and generates human-readable recommendations using Large Language Models. It combines Computer Vision, NLP, and cloud deployment into one modular healthcare solution.",
   features: [
     "10-class skin disease classification",
-    "EfficientNetB0 + MobileNetV2 + ResNet50 ensemble",
+    "EfficientNetB0 + MobileNetV2 + ResNet50",
     "YOLOv8 lesion localization",
     "LLM-powered health recommendations",
     "PDF medical report generation",
@@ -174,9 +174,9 @@ const PROJECTS: Project[] = [
   ],
   metric: "High Accuracy Multi-Model System",
   github: "https://github.com/SifatSwapnil2022/SkinCareAI",
-  image: "/image/skincare_intro.png",
+  image: "/public/image/skincare_intro.png",
   icon: <HeartPulse className="w-6 h-6" />,
-  videoSrc: "/videos/SkinCareAI.mp4"
+  videoSrc: "/public/videos/SkinCareAI.mp4"
 }
 ];
 
