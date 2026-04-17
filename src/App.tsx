@@ -1,3 +1,4 @@
+import { useState, useEffect, ReactNode } from 'react';
 import {
   Github,
   Linkedin,
@@ -82,11 +83,13 @@ const PUBLICATIONS: Publication[] = [
     authors: "Md. Sifatullah Sheikh et al.",
     venue: "IEEE Access (Q1 Journal)",
     venueType: "journal",
+    // FIX #3: Corrected paper link to match PUBLICATIONS data (was 10534246, correct is 11303744)
     link: "https://ieeexplore.ieee.org/document/11303744",
     highlight:
       "Proposed DeFaX, a cross-attention fusion framework integrating Swin Transformer and EfficientNet. Achieved 99.8% accuracy and AUC 1.000 on the 140K real–fake face dataset with Grad-CAM and LIME for explainable AI."
   }
 ];
+
 const PROJECTS: Project[] = [
   {
     id: "medileaf",
@@ -120,10 +123,11 @@ const PROJECTS: Project[] = [
       "Robust against compression artifacts",
       "Cross-dataset validation"
     ],
-    tech: ["TensorFlow", "Python", "Grad-CAM", "ViT","CNNs"],
+    tech: ["TensorFlow", "Python", "Grad-CAM", "ViT", "CNNs"],
     metric: "99.80% Accuracy",
     github: "https://github.com/SifatSwapnil2022/Journal_DefaX_codes",
-    paperLink: "https://ieeexplore.ieee.org/document/10534246",
+    // FIX #3: Corrected paperLink to match the correct IEEE document number (was 10534246)
+    paperLink: "https://ieeexplore.ieee.org/document/11303744",
     image: "/image/defax_intro.png",
     icon: <CheckCircle2 className="w-6 h-6" />,
     videoSrc: "/videos/Defax.mp4"
@@ -146,38 +150,39 @@ const PROJECTS: Project[] = [
     website: "https://bazario.ltd/",
     image: "/image/bazario_intro.png",
     icon: <Layers className="w-6 h-6" />,
-      videoSrc: "/videos/Bazario.mp4"
+    videoSrc: "/videos/Bazario.mp4"
   },
   {
-  id: "skincare-ai",
-  title: "SkinCare AI",
-  tag: "Healthcare AI / Computer Vision",
-  description: "An end-to-end AI healthcare platform for skin disease detection using deep learning ensembles with LLM-powered medical recommendations.",
-  longDescription: "SkinCare AI is an intelligent clinical support system that analyzes skin images, classifies diseases through a multi-model ensemble, and generates human-readable recommendations using Large Language Models. It combines Computer Vision, NLP, and cloud deployment into one modular healthcare solution.",
-  features: [
-    "10-class skin disease classification",
-    "EfficientNetB0 + MobileNetV2 + ResNet50",
-    "YOLOv8 lesion localization",
-    "LLM-powered health recommendations",
-    "PDF medical report generation",
-    "Authentication, dashboard & history system"
-  ],
-  tech: [
-    "Python",
-    "FastAPI",
-    "Streamlit",
-    "TensorFlow",
-    "PyTorch",
-    "YOLOv8",
-    "MongoDB",
-    "Docker"
-  ],
-  metric: "High Accuracy Multi-Model System",
-  github: "https://github.com/SifatSwapnil2022/SkinCareAI",
-  image: "/public/image/skincare_intro.png",
-  icon: <HeartPulse className="w-6 h-6" />,
-  videoSrc: "/public/videos/SkinCareAI.mp4"
-}
+    id: "skincare-ai",
+    title: "SkinCare AI",
+    tag: "Healthcare AI / Computer Vision",
+    description: "An end-to-end AI healthcare platform for skin disease detection using deep learning ensembles with LLM-powered medical recommendations.",
+    longDescription: "SkinCare AI is an intelligent clinical support system that analyzes skin images, classifies diseases through a multi-model ensemble, and generates human-readable recommendations using Large Language Models. It combines Computer Vision, NLP, and cloud deployment into one modular healthcare solution.",
+    features: [
+      "10-class skin disease classification",
+      "EfficientNetB0 + MobileNetV2 + ResNet50",
+      "YOLOv8 lesion localization",
+      "LLM-powered health recommendations",
+      "PDF medical report generation",
+      "Authentication, dashboard & history system"
+    ],
+    tech: [
+      "Python",
+      "FastAPI",
+      "Streamlit",
+      "TensorFlow",
+      "PyTorch",
+      "YOLOv8",
+      "MongoDB",
+      "Docker"
+    ],
+    metric: "High Accuracy Multi-Model System",
+    github: "https://github.com/SifatSwapnil2022/SkinCareAI",
+    // FIX #2: Removed incorrect "/public" prefix from image and video paths
+    image: "/image/skincare_intro.png",
+    icon: <HeartPulse className="w-6 h-6" />,
+    videoSrc: "/videos/SkinCareAI.mp4"
+  }
 ];
 
 const NEWS: NewsItem[] = [
@@ -190,7 +195,7 @@ const NEWS: NewsItem[] = [
     id: "2",
     date: "December 2025",
     content: "Our research paper 'DeFaX' was published in IEEE Access, a prestigious Q1 journal.",
-    link: "https://ieeexplore.ieee.org/document/10534246",
+    link: "https://ieeexplore.ieee.org/document/11303744",
     linkText: "Read Paper"
   },
   {
@@ -212,14 +217,14 @@ const SectionHeader = ({ tag, title, subtitle }: { tag: string; title: string; s
 
 const ProjectModal = ({ project, onClose }: { project: Project; onClose: () => void }) => {
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-ink/40 backdrop-blur-sm"
       onClick={onClose}
     >
-      <motion.div 
+      <motion.div
         initial={{ scale: 0.9, y: 20 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.9, y: 20 }}
@@ -227,7 +232,7 @@ const ProjectModal = ({ project, onClose }: { project: Project; onClose: () => v
         onClick={e => e.stopPropagation()}
       >
         <div className="sticky top-0 right-0 p-6 flex justify-end z-10 pointer-events-none">
-          <button 
+          <button
             onClick={onClose}
             className="p-3 bg-white/80 backdrop-blur-md rounded-full text-ink hover:bg-rust hover:text-white transition-all shadow-lg pointer-events-auto"
           >
@@ -236,9 +241,9 @@ const ProjectModal = ({ project, onClose }: { project: Project; onClose: () => v
         </div>
 
         <div className="relative h-64 md:h-96">
-          <img 
-            src={project.image} 
-            alt={project.title} 
+          <img
+            src={project.image}
+            alt={project.title}
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />
@@ -282,36 +287,36 @@ const ProjectModal = ({ project, onClose }: { project: Project; onClose: () => v
               </section>
 
               <section className="bg-cream p-8 rounded-3xl border border-sand/30">
-  <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-    <Play className="w-5 h-5 text-rust" /> Project Demo
-  </h3>
-  {project.videoSrc ? (
-    <video
-      key={project.videoSrc}
-      controls
-      className="w-full rounded-2xl border border-sand/20 bg-ink/5"
-      preload="metadata"
-    >
-      <source
-  src={project.videoSrc}
-  type={
-    project.videoSrc.endsWith('.mp4') ? 'video/mp4' :
-    project.videoSrc.endsWith('.webm') ? 'video/webm' :
-    'video/mp4'
-  }
-/>
-      Your browser does not support the video tag.
-    </video>
-  ) : (
-    <div className="aspect-video bg-ink/5 rounded-2xl flex items-center justify-center border-2 border-dashed border-sand">
-      <div className="text-center p-8">
-        <Play className="w-12 h-12 text-rust/40 mx-auto mb-4" />
-        <p className="text-ink/40 font-medium">Demo video placeholder</p>
-        <p className="text-xs text-ink/30 mt-2">Visit GitHub for full video demonstrations</p>
-      </div>
-    </div>
-  )}
-</section>
+                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                  <Play className="w-5 h-5 text-rust" /> Project Demo
+                </h3>
+                {project.videoSrc ? (
+                  <video
+                    key={project.videoSrc}
+                    controls
+                    className="w-full rounded-2xl border border-sand/20 bg-ink/5"
+                    preload="metadata"
+                  >
+                    <source
+                      src={project.videoSrc}
+                      type={
+                        project.videoSrc.endsWith('.mp4') ? 'video/mp4' :
+                        project.videoSrc.endsWith('.webm') ? 'video/webm' :
+                        'video/mp4'
+                      }
+                    />
+                    Your browser does not support the video tag.
+                  </video>
+                ) : (
+                  <div className="aspect-video bg-ink/5 rounded-2xl flex items-center justify-center border-2 border-dashed border-sand">
+                    <div className="text-center p-8">
+                      <Play className="w-12 h-12 text-rust/40 mx-auto mb-4" />
+                      <p className="text-ink/40 font-medium">Demo video placeholder</p>
+                      <p className="text-xs text-ink/30 mt-2">Visit GitHub for full video demonstrations</p>
+                    </div>
+                  </div>
+                )}
+              </section>
             </div>
 
             <div className="space-y-8">
@@ -332,18 +337,18 @@ const ProjectModal = ({ project, onClose }: { project: Project; onClose: () => v
               </div>
 
               <div className="flex flex-col gap-3">
-                <a 
-                  href={project.github} 
-                  target="_blank" 
+                <a
+                  href={project.github}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 bg-ink text-white py-4 rounded-xl font-bold hover:bg-rust transition-colors"
                 >
                   <Github className="w-5 h-5" /> View on GitHub
                 </a>
                 {project.website && (
-                  <a 
-                    href={project.website} 
-                    target="_blank" 
+                  <a
+                    href={project.website}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 bg-white border border-ink/10 text-ink py-4 rounded-xl font-bold hover:bg-cream transition-colors"
                   >
@@ -351,9 +356,9 @@ const ProjectModal = ({ project, onClose }: { project: Project; onClose: () => v
                   </a>
                 )}
                 {project.paperLink && (
-                  <a 
-                    href={project.paperLink} 
-                    target="_blank" 
+                  <a
+                    href={project.paperLink}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 bg-white border border-ink/10 text-ink py-4 rounded-xl font-bold hover:bg-cream transition-colors"
                   >
@@ -370,6 +375,7 @@ const ProjectModal = ({ project, onClose }: { project: Project; onClose: () => v
 };
 
 export default function App() {
+  // FIX #1: Added missing useState and useEffect imports at top of file (now properly imported)
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -393,24 +399,24 @@ export default function App() {
 
         <div className="hidden md:flex items-center gap-10">
           {["About", "Experience", "Research", "Projects", "News", "Contact"].map((item) => (
-            <a 
-              key={item} 
+            <a
+              key={item}
               href={`#${item.toLowerCase()}`}
               className="text-[11px] font-semibold tracking-widest uppercase text-ink/50 hover:text-rust transition-colors"
             >
               {item}
             </a>
           ))}
-          <a 
-  href="/cv/CV_SIFATULLAH_SHEIKH.pdf"
-  download
-  className="bg-ink text-cream px-6 py-2 rounded-full text-[11px] font-semibold tracking-widest uppercase hover:bg-rust transition-all"
->
-  CV <Download className="inline-block w-3 h-3 ml-1" />
-</a>
+          <a
+            href="/cv/CV_SIFATULLAH_SHEIKH.pdf"
+            download
+            className="bg-ink text-cream px-6 py-2 rounded-full text-[11px] font-semibold tracking-widest uppercase hover:bg-rust transition-all"
+          >
+            CV <Download className="inline-block w-3 h-3 ml-1" />
+          </a>
         </div>
 
-        <button 
+        <button
           className="md:hidden text-ink"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
@@ -421,7 +427,7 @@ export default function App() {
       {/* --- Mobile Menu --- */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -429,8 +435,8 @@ export default function App() {
           >
             <div className="flex flex-col gap-8">
               {["About", "Experience", "Research", "Projects", "News", "Contact"].map((item) => (
-                <a 
-                  key={item} 
+                <a
+                  key={item}
                   href={`#${item.toLowerCase()}`}
                   onClick={() => setMobileMenuOpen(false)}
                   className="font-serif text-4xl text-ink"
@@ -449,7 +455,7 @@ export default function App() {
         <div className="absolute bottom-[-10%] left-[-5%] w-[30vw] h-[30vw] bg-sand/10 rounded-full blur-[80px] -z-10" />
 
         <div className="container mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12 items-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -485,7 +491,7 @@ export default function App() {
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -497,7 +503,7 @@ export default function App() {
               <div className="w-full h-full bg-sand/30 rounded-[2rem] overflow-hidden border-4 border-cream shadow-2xl">
                 <img src="/image/myself.jpg" alt="Md Sifatullah Sheikh" className="w-full h-full object-cover object-top" />
               </div>
-              
+
               <div className="absolute -bottom-6 -right-6 bg-cream p-6 rounded-2xl shadow-xl border border-ink/5 max-w-[200px]">
                 <div className="text-rust font-serif text-2xl mb-1">IEEE</div>
                 <div className="text-[10px] font-bold tracking-widest uppercase text-ink/60 leading-tight">
@@ -512,11 +518,11 @@ export default function App() {
       {/* --- About Section --- */}
       <section id="about" className="py-24 bg-warm-white">
         <div className="container mx-auto px-6 md:px-12">
-          <SectionHeader 
-            tag="About Me" 
-            title="The person behind the <em>research</em>" 
+          <SectionHeader
+            tag="About Me"
+            title="The person behind the <em>research</em>"
           />
-          
+
           <div className="grid md:grid-cols-2 gap-16 items-start">
             <div className="space-y-6 text-lg text-ink/70 leading-relaxed">
               <p>
@@ -527,7 +533,7 @@ export default function App() {
               <p>
                 During my undergraduate years, I worked as a Research Assistant developing <strong>DeFaX</strong> — a deepfake detection framework that achieved near-perfect accuracy and was published in IEEE Access (Q1 Journal).
               </p>
-              
+
               <div className="grid grid-cols-2 gap-4 pt-6">
                 {[
                   { label: "Location", value: "Dhaka, BD" },
@@ -570,9 +576,9 @@ export default function App() {
       {/* --- Experience Section --- */}
       <section id="experience" className="py-24">
         <div className="container mx-auto px-6 md:px-12">
-          <SectionHeader 
-            tag="Experience" 
-            title="Where I've <em>worked</em>" 
+          <SectionHeader
+            tag="Experience"
+            title="Where I've <em>worked</em>"
             subtitle="Research and professional experience building AI systems that matter."
           />
 
@@ -631,7 +637,7 @@ export default function App() {
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                       <div>
                         <p className="font-semibold text-ink">Al Imran</p>
-                        <p className="text-ink/50 text-sm">Senior-Lecturer,Department of CSE, East West University</p>
+                        <p className="text-ink/50 text-sm">Senior-Lecturer, Department of CSE, East West University</p>
                       </div>
                       <div className="flex flex-wrap gap-2">
                         <a
@@ -664,15 +670,15 @@ export default function App() {
       {/* --- Research Section --- */}
       <section id="research" className="py-24 bg-warm-white">
         <div className="container mx-auto px-6 md:px-12">
-          <SectionHeader 
-            tag="Publications" 
-            title="Peer-reviewed <em>research</em>" 
+          <SectionHeader
+            tag="Publications"
+            title="Peer-reviewed <em>research</em>"
             subtitle="Published in Q1 journals and international IEEE conferences on AI safety and deepfake detection."
           />
 
           <div className="space-y-6">
             {PUBLICATIONS.map((pub) => (
-              <motion.div 
+              <motion.div
                 key={pub.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -701,7 +707,8 @@ export default function App() {
                   <div className="bg-sand/10 border-l-4 border-rust p-4 rounded-r-xl text-sm text-ink/70 mb-6 italic">
                     {pub.highlight}
                   </div>
-                  <a href={pub.link} target="_blank" className="inline-flex items-center gap-2 text-rust font-bold text-sm group/link">
+                  {/* FIX #6: Added rel="noopener noreferrer" to external link */}
+                  <a href={pub.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-rust font-bold text-sm group/link">
                     View Publication <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                   </a>
                 </div>
@@ -714,15 +721,15 @@ export default function App() {
       {/* --- Projects Section --- */}
       <section id="projects" className="py-24">
         <div className="container mx-auto px-6 md:px-12">
-          <SectionHeader 
-            tag="Projects" 
-            title="Things I've <em>built</em>" 
+          <SectionHeader
+            tag="Projects"
+            title="Things I've <em>built</em>"
             subtitle="Research prototypes, production applications, and everything in between."
           />
 
           <div className="grid md:grid-cols-3 gap-8">
             {PROJECTS.map((project) => (
-              <motion.div 
+              <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -730,17 +737,17 @@ export default function App() {
                 className="bg-cream border border-ink/5 p-8 rounded-3xl flex flex-col h-full hover:shadow-xl transition-all relative overflow-hidden group"
               >
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-rust scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
-                
+
                 <div className="w-12 h-12 bg-sand/20 rounded-xl flex items-center justify-center text-rust mb-6">
                   {project.icon}
                 </div>
-                
+
                 <div className="text-[10px] font-bold tracking-widest uppercase text-ink/40 mb-2">{project.tag}</div>
                 <h3 className="font-serif text-2xl text-ink mb-4">{project.title}</h3>
                 <p className="text-ink/60 text-sm leading-relaxed mb-8 flex-1">
                   {project.description}
                 </p>
-                
+
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tech.map(t => (
                     <span key={t} className="text-[10px] font-bold bg-sand/10 px-2 py-1 rounded border border-sand/30 text-ink/60">
@@ -748,7 +755,7 @@ export default function App() {
                     </span>
                   ))}
                 </div>
-                
+
                 <div className="flex items-center gap-2 text-green-600 font-bold text-sm mb-6">
                   <CheckCircle2 className="w-4 h-4" />
                   {project.metric}
@@ -770,9 +777,9 @@ export default function App() {
       {/* --- Education Section --- */}
       <section id="education" className="py-24 bg-warm-white">
         <div className="container mx-auto px-6 md:px-12">
-          <SectionHeader 
-            tag="Education" 
-            title="Academic <em>background</em>" 
+          <SectionHeader
+            tag="Education"
+            title="Academic <em>background</em>"
           />
 
           <div className="grid md:grid-cols-5 gap-12 items-start">
@@ -784,7 +791,7 @@ export default function App() {
                 <div>
                   <h3 className="font-serif text-2xl text-ink mb-2">BSc in Computer Science & Engineering</h3>
                   <p className="text-ink/50 mb-6">East West University, Dhaka, Bangladesh</p>
-                  
+
                   <div className="flex flex-wrap gap-4 mb-8">
                     <span className="bg-green-600/10 text-green-600 px-4 py-1.5 rounded-full text-xs font-bold flex items-center gap-2">
                       <Star className="w-3 h-3" /> GPA 3.70 / 4.00
@@ -793,7 +800,7 @@ export default function App() {
                       Jan 2022 – Jan 2026
                     </span>
                   </div>
-                  
+
                   <p className="text-ink/70 text-sm leading-relaxed">
                     <strong className="text-ink">Relevant Coursework:</strong> <br />
                     Data Structures & Algorithms, AI, Machine Learning, Data Mining, Computer Vision, Operating Systems, Database Design, IoT, Circuit Design.
@@ -816,7 +823,7 @@ export default function App() {
                         <span>{lang.level}</span>
                       </div>
                       <div className="h-1.5 bg-sand/20 rounded-full overflow-hidden">
-                        <motion.div 
+                        <motion.div
                           initial={{ width: 0 }}
                           whileInView={{ width: lang.width }}
                           viewport={{ once: true }}
@@ -852,14 +859,14 @@ export default function App() {
       {/* --- News Section --- */}
       <section id="news" className="py-24">
         <div className="container mx-auto px-6 md:px-12">
-          <SectionHeader 
-            tag="Latest News" 
-            title="What's been <em>happening</em>" 
+          <SectionHeader
+            tag="Latest News"
+            title="What's been <em>happening</em>"
           />
 
           <div className="max-w-3xl">
             {NEWS.map((item, idx) => (
-              <motion.div 
+              <motion.div
                 key={item.id}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -875,7 +882,8 @@ export default function App() {
                     {item.content}
                   </p>
                   {item.link && (
-                    <a href={item.link} target="_blank" className="text-rust text-sm font-bold flex items-center gap-1 hover:gap-2 transition-all">
+                    // FIX #6: Added rel="noopener noreferrer" to external link
+                    <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-rust text-sm font-bold flex items-center gap-1 hover:gap-2 transition-all">
                       {item.linkText} <ChevronRight className="w-4 h-4" />
                     </a>
                   )}
@@ -889,9 +897,9 @@ export default function App() {
       {/* --- Contact Section --- */}
       <section id="contact" className="py-24 bg-warm-white">
         <div className="container mx-auto px-6 md:px-12">
-          <SectionHeader 
-            tag="Get in Touch" 
-            title="Let's <em>connect</em>" 
+          <SectionHeader
+            tag="Get in Touch"
+            title="Let's <em>connect</em>"
           />
 
           <div className="grid md:grid-cols-2 gap-16">
@@ -910,10 +918,11 @@ export default function App() {
                   { icon: <Github />, label: "Github", value: "SifatSwapnil2022", href: "https://github.com/SifatSwapnil2022" },
                   { icon: <BookOpen />, label: "ResearchGate", value: "Sifatullah Sheikh", href: "https://www.researchgate.net/profile/Sifatullah-Sheikh" }
                 ].map(link => (
-                  <a 
+                  <a
                     key={link.label}
                     href={link.href}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-6 p-6 bg-cream border border-ink/5 rounded-2xl hover:border-rust hover:bg-rust/5 transition-all group"
                   >
                     <div className="text-rust group-hover:scale-110 transition-transform">
@@ -928,8 +937,9 @@ export default function App() {
               </div>
             </div>
 
+            {/* Contact form — using div wrapper instead of <form> to avoid default submit behavior */}
             <div className="bg-cream border border-ink/5 p-8 md:p-12 rounded-[3rem]">
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+              <div className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-[10px] font-bold tracking-widest uppercase text-ink/40 ml-2">Name</label>
@@ -948,16 +958,20 @@ export default function App() {
                   <label className="text-[10px] font-bold tracking-widest uppercase text-ink/40 ml-2">Message</label>
                   <textarea placeholder="Your Message..." rows={5} className="w-full bg-warm-white border border-ink/10 rounded-2xl px-6 py-4 outline-none focus:border-rust transition-colors resize-none" />
                 </div>
-                <button className="w-full bg-ink text-cream py-5 rounded-full font-bold text-lg hover:bg-rust transition-all flex items-center justify-center gap-2">
+                <button
+                  type="button"
+                  className="w-full bg-ink text-cream py-5 rounded-full font-bold text-lg hover:bg-rust transition-all flex items-center justify-center gap-2"
+                >
                   Send Message <ArrowRight className="w-5 h-5" />
                 </button>
-              </form>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* --- Footer --- */}
+      {/* FIX #5: Replaced placeholder href="#" with actual social URLs */}
       <footer className="bg-ink text-cream/40 py-12 px-6 md:px-12 border-t border-cream/5">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="text-center md:text-left">
@@ -966,9 +980,15 @@ export default function App() {
           </div>
 
           <div className="flex gap-6">
-            <a href="#" className="hover:text-rust transition-colors"><Linkedin className="w-5 h-5" /></a>
-            <a href="#" className="hover:text-rust transition-colors"><Github className="w-5 h-5" /></a>
-            <a href="#" className="hover:text-rust transition-colors"><Mail className="w-5 h-5" /></a>
+            <a href="https://www.linkedin.com/in/mdsifatullahsheikh" target="_blank" rel="noopener noreferrer" className="hover:text-rust transition-colors">
+              <Linkedin className="w-5 h-5" />
+            </a>
+            <a href="https://github.com/SifatSwapnil2022" target="_blank" rel="noopener noreferrer" className="hover:text-rust transition-colors">
+              <Github className="w-5 h-5" />
+            </a>
+            <a href="mailto:mdsifatullahsheikh@gmail.com" className="hover:text-rust transition-colors">
+              <Mail className="w-5 h-5" />
+            </a>
           </div>
 
           <div className="text-sm">
@@ -980,9 +1000,9 @@ export default function App() {
       {/* --- Project Modal --- */}
       <AnimatePresence>
         {selectedProject && (
-          <ProjectModal 
-            project={selectedProject} 
-            onClose={() => setSelectedProject(null)} 
+          <ProjectModal
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
           />
         )}
       </AnimatePresence>
