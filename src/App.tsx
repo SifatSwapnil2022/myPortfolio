@@ -147,26 +147,56 @@ const PROJECTS: Project[] = [
     image: "/image/bazario_intro.png",
     icon: <Layers className="w-6 h-6" />,
       videoSrc: "/videos/Bazario.mp4"
-  }
+  },
+  {
+  id: "skincare-ai",
+  title: "SkinCare AI",
+  tag: "Healthcare AI / Computer Vision",
+  description: "An end-to-end AI healthcare platform for skin disease detection using deep learning ensembles with LLM-powered medical recommendations.",
+  longDescription: "SkinCare AI is an intelligent clinical support system that analyzes skin images, classifies diseases through a multi-model ensemble, and generates human-readable recommendations using Large Language Models. It combines Computer Vision, NLP, and cloud deployment into one modular healthcare solution.",
+  features: [
+    "10-class skin disease classification",
+    "EfficientNetB0 + MobileNetV2 + ResNet50 ensemble",
+    "YOLOv8 lesion localization",
+    "LLM-powered health recommendations",
+    "PDF medical report generation",
+    "Authentication, dashboard & history system"
+  ],
+  tech: [
+    "Python",
+    "FastAPI",
+    "Streamlit",
+    "TensorFlow",
+    "PyTorch",
+    "YOLOv8",
+    "MongoDB",
+    "Docker"
+  ],
+  metric: "High Accuracy Multi-Model System",
+  github: "https://github.com/SifatSwapnil2022/SkinCareAI",
+  image: "/image/skincare_intro.png",
+  icon: <HeartPulse className="w-6 h-6" />,
+  videoSrc: "/videos/SkinCareAI.mp4"
+}
 ];
 
 const NEWS: NewsItem[] = [
   {
     id: "1",
-    date: "Dec 2025",
+    date: "January 2026",
     content: "Graduated with a BSc in Computer Science & Engineering from East West University with a GPA of 3.70."
   },
   {
     id: "2",
-    date: "May 2024",
+    date: "December 2025",
     content: "Our research paper 'DeFaX' was published in IEEE Access, a prestigious Q1 journal.",
     link: "https://ieeexplore.ieee.org/document/10534246",
     linkText: "Read Paper"
   },
   {
     id: "3",
-    date: "Oct 2023",
-    content: "Awarded 3rd place in the IT Olympiad at Robo-Fest 2023."
+    date: "Oct 2024",
+    content: "Awarded 3rd place in the IT Olympiad at National Robo-Fest 2024."
   }
 ];
 
@@ -760,7 +790,7 @@ export default function App() {
                       <Star className="w-3 h-3" /> GPA 3.70 / 4.00
                     </span>
                     <span className="bg-sand/20 text-ink/60 px-4 py-1.5 rounded-full text-xs font-bold">
-                      Jan 2022 – Dec 2025
+                      Jan 2022 – Jan 2026
                     </span>
                   </div>
                   
